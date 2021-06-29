@@ -49,12 +49,16 @@
     },
     "API_SECRET": {
       "description": "A passphrase that must be at least 12 characters long. Avoid 'special' characters, which can cause problems in some cases.",
-      "value": "",
+      "value": "ginandtonicsforever",
+      "required": true
+    },
+    "AUTH_DEFAULT_ROLES": {
+      "value": "denied",
       "required": true
     },
     "BG_HIGH": {
       "description": "Urgent High BG threshold, triggers the ALARM_URGENT_HIGH alarm. Set in mg/dL or mmol/L, as set in DISPLAY_UNITS variable.",
-      "value": "260",
+      "value": "200",
       "required": false
     },
     "BG_LOW": {
@@ -64,17 +68,17 @@
     },
     "BG_TARGET_BOTTOM": {
       "description": "Low BG threshold, triggers the ALARM_LOW alarm. Set in mg/dL or mmol/L, as set in DISPLAY_UNITS variable.",
-      "value": "80",
+      "value": "70",
       "required": false
     },
     "BG_TARGET_TOP": {
       "description": "High BG threshold, triggers the ALARM_HIGH alarm. Set in mg/dL or mmol/L, as set in DISPLAY_UNITS variable.",
-      "value": "180",
+      "value": "150",
       "required": false
     },
     "BRIDGE_PASSWORD": {
       "description": "Your Dexcom account password, to receive CGM data from the Dexcom Share service. Also make sure to include 'bridge' in your ENABLE line.",
-      "value": "",
+      "value": "d3xc0Mklmj",
       "required": false
     },
     "BRIDGE_SERVER": {
@@ -84,7 +88,7 @@
     },
     "BRIDGE_USER_NAME": {
       "description": "Your Dexcom account username, to receive CGM data from the Dexcom Share service. Also make sure to include 'bridge' in your ENABLE line.",
-      "value": "",
+      "value": "kelebek",
       "required": false
     },
     "CUSTOM_TITLE": {
@@ -99,7 +103,19 @@
     },
     "ENABLE": {
       "description": "Plugins to enable for your site. Must be a space-delimited, lower-case list. Include the word 'bridge' here if you are receiving data from the Dexcom Share service. Include 'mmconnect' if you are bridging from the MiniMed CareLink service.",
-      "value": "careportal basal",
+      "value": "careportal basal iob cob cage sage iage azurepush bridge pump loop rawbg",
+      "required": false
+    },
+    "LOOP_ENABLE_ALERTS": {
+      "value": "true",
+      "required": false
+    },
+    "LOOP_URGENT": {
+      "value": "60",
+      "required": false
+    },
+    "LOOP_WARN": {
+      "value": "30",
       "required": false
     },
     "MMCONNECT_USER_NAME": {
@@ -122,24 +138,76 @@
       "value": "entries",
       "required": true
     },
+    "MONGO_CONNECTION": {
+      "value": "mongodb+srv://heroku_9pp513zj:ginandtonicsforever@cluster-9pp513zj.j4vso.mongodb.net/heroku_9pp513zj?retryWrites=true&w=majority",
+      "required": true
+    },
     "NIGHT_MODE": {
       "description": "Default setting for new browser views, for whether Night Mode should be enabled. ('on' or 'off')",
       "value": "off",
       "required": false 
     },
+    "OLD_DB_URI": {
+      "value": "mongodb://heroku_9pp513zj:8uckctig6lop57hcci9mcemstf@ds139446.mlab.com:39446/heroku_9pp513zj",
+      "required": false 
+    },
+    "PAPERTRAIL_API_TOKEN": {
+      "value": "cVKpcjEH7BgjH6gf3Gi",
+      "required": false 
+    },
+    "PUMP_ENABLE_ALERTS": {
+      "value": "true",
+      "required": false 
+    },
+    "PUMP_FIELDS": {
+      "value": "battery reservoir clock status",
+      "required": false 
+    },
+    "PUMP_RETRO_FIELDS": {
+      "value": "battery reservoir clock status",
+      "required": false 
+    },
+    "PUMP_URGENT_BATT_U": {
+      "value": "30",
+      "required": false 
+    },
+    "PUMP_URGENT_BATT_V": {
+      "value": "1.25",
+      "required": false 
+    },
+    "PUMP_URGENT_CLOCK": {
+      "value": "30",
+      "required": false 
+    },
+    "PUMP_URGENT_RES": {
+      "value": "10",
+      "required": false 
+    },
+    "PUSHOVER_ANNOUNCEMENT_KEY": {
+      "value": "off",
+      "required": false 
+    },
+    "PUSHOVER_API_TOKEN": {
+      "value": "9TnowwQsGXL6q3GKfy5eYm2s3Tjxr4",
+      "required": false 
+    },
+    "PUSHOVER_USER_KEY": {
+      "value": "off",
+      "required": false 
+    },
     "SHOW_PLUGINS": {
       "description": "Default setting for whether or not these plugins are checked (active) by default, not merely enabled. Include plugins here as in the ENABLE line; space-separated and lower-case.",
-      "value": "careportal",
+      "value": "loop pump cob iob sage cage careportal",
       "required": false
     },
     "SHOW_RAWBG": {
       "description": "Default setting for new browser views, for the display of raw CGM data (if available). ('always', 'never', or 'noise')",
-      "value": "never",
+      "value": "Always",
       "required": false 
     },
     "THEME": {
       "description": "Default setting for new browser views, for the color theme of the CGM graph. ('default', 'colors', or 'colorblindfriendly')",
-      "value": "colors",
+      "value": "default",
       "required": false 
     },
     "TIME_FORMAT": {
@@ -149,7 +217,6 @@
     }
   },
   "addons": [
-    "mongolab:sandbox",
     "papertrail"
   ]
 }
